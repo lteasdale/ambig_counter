@@ -1,0 +1,7 @@
+*.pyc
+*.swp
+
+*.fasta
+*.fa
+*.fas
+*.phy
