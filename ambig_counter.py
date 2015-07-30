@@ -37,6 +37,9 @@ the proportion of ambiguous sites is greater than or equal to the threshold
 with a dummy sequence.
 
 You need to have python-screed and python-docopt installed.
+
+e.g. python ambig_counter.py -t 0.03 *.fasta > table_of_ambig_counts.txt
+
 """
 
 # This function counts the number of ambiguous bases per sequence per file,
@@ -79,9 +82,9 @@ def prop_ambig_threshold(files, threshold):
             seq = seq.sequence
             length, prop_ambig = ambigs[seq_name]
             if prop_ambig >= threshold:
-                seq = '~' * length
+                seq = '-' * length
                 seq_name = seq_name + '_dummy_high_prop_ambig'
-            print(">{}\n{}\n".format(seq_name, seq), file=new_file)
+            print(">{}\n{}".format(seq_name, seq), file=new_file)
         new_file.close()
 
 
